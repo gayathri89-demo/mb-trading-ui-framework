@@ -1,3 +1,9 @@
 {
-  "menuItems": ["Markets", "Trade", "About Us"]
+  "topMenuItems": [
+    "Explore",
+    "Features",
+    "Company",
+    "SMBG"
+  ],
+  "clickableMenuItems": ["Explore", "Features", "Company"]
 }
