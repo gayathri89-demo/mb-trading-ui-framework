@@ -22,4 +22,16 @@
 //
 //
 // -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Cypress.Commands.overwrite('visit', (originalFn, url, options
+// ) => { ... })
+Cypress.Commands.add("openHomepage", () => {
+  cy.visit("/homepage", { failOnStatusCode: false });
+});
+
+Cypress.Commands.add("waitForPage", () => {
+  cy.get("body").should("be.visible");
+});
+
+Cypress.Commands.add("scrollToText", (text) => {
+  cy.contains(text, { matchCase: false }).scrollIntoView().should("be.visible");
+});
