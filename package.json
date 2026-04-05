@@ -6,8 +6,9 @@
   "scripts": {
     "cy:open": "cypress open",
     "test": "cypress run",
-    "report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/merged.json",
-    "report:generate": "marge cypress/reports/merged.json -f report -o cypress/reports",
+    "report:merge": "mochawesome-merge \"cypress/reports/mochawesome/*.json\" -o cypress/reports/merged.json",
+  "report:generate": "marge cypress/reports/merged.json -f report -o cypress/reports",
+  "test:report": "npm run test && npm run report:merge && npm run report:generate",
     "test:chrome": "cypress run --browser chrome",
     "test:edge": "cypress run --browser edge",
     "test:firefox": "cypress run --browser firefox",
