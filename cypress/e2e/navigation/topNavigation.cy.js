@@ -2,7 +2,7 @@ import NavigationPage from "../../pageObjects/NavigationPage";
 
 describe("Top Navigation Menu", () => {
   beforeEach(() => {
-    cy.visit("https://mb.io/en-AE/explore", {
+    cy.visit(Cypress.env("exploreUrl"), {
       failOnStatusCode: false
     });
     cy.get("body").should("be.visible");
