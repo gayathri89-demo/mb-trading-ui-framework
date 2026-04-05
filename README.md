@@ -1,0 +1,189 @@
+# Overview
+
+This project is a Cypress-based Web UI Automation Framework built to validate key user flows on the MultiBank platform.
+
+The goal of this framework is not just to automate tests, but to reflect real-world automation practices — focusing on maintainability, reliability, and clean structure.
+
+Through this project, I’ve implemented:
+
+- A Page Object Model (POM) structure to keep tests clean and reusable
+- Fixture-driven test data to avoid hard-coded values where possible
+- Cross-browser execution support
+- Basic strategies to handle dynamic UI behavior and flaky elements
+- CI/CD integration using GitHub Actions
+- Automated reporting using Mochawesome
+
+# Tech Stack
+- Cypress (E2E Testing)
+- JavaScript (ES6)
+- Mochawesome (Reporting)
+- GitHub Actions (CI/CD)
+
+# Project Structure
+mb-trading-ui-framework/
+├─ cypress/
+│  ├─ e2e/
+│  │  ├─ navigation/
+│  │  ├─ trading/
+│  │  └─ content/
+│  ├─ fixtures/
+│  ├─ pageObjects/
+│  ├─ support/
+│  ├─ reports/
+│  ├─ screenshots/
+│  └─ videos/
+├─ cypress.config.js
+├─ package.json
+└─ README.md
+
+The structure is designed to be easy to scale, with clear separation between test logic, data, and reusable components.
+
+# Setup Instructions
+1. Clone the repository
+git clone https://github.com/gayathri89-demo/mb-trading-ui-framework.git
+cd mb-trading-ui-framework
+2. Install dependencies
+npm install
+3. Open Cypress Test Runner
+npx cypress open
+4. Run tests via CLI
+npm run test
+# Environment Configuration
+
+Base URLs are defined in cypress.config.js:
+
+env: {
+     tradeHomepageUrl: "https://trade.mb.io/homepage",
+      exploreUrl: "https://mb.io/en-AE/explore",
+      bannersUrl: "https://mb.io/en-AE",
+      companyUrl: "https://mb.io/en-AE/company"
+}
+
+# Note:
+Most URLs are centralized, but a few places still use hard-coded values.
+This is an area that can be improved by fully moving to environment-driven configuration.
+
+# Test Coverage
+- Navigation & Layout
+Verifies top navigation menu visibility
+Validates menu items and links
+Ensures navigation works correctly
+- Trading Functionality
+Checks visibility of the spot trading section
+Verifies presence of trading pairs
+Performs basic validation on displayed data
+Note:
+Some checks (like specific trading pairs such as MBG) are currently hard-coded and can be improved using fixtures.
+- Content Validation
+Validates marketing banners
+Verifies download section links
+Checks “Why MultiBank” page content
+
+# Test Design Approach
+
+While building this framework, I focused on keeping tests:
+
+Independent (no shared state between tests)
+Simple and readable
+Free from fixed waits like cy.wait(5000)
+Built using reusable commands and page objects
+Stable using Cypress’ built-in retry mechanism
+
+# Handling Flakiness
+
+To improve test stability, the framework follows a few practical strategies:
+
+- Pages are validated for basic visibility using a reusable command (`waitForPage`)
+- Elements are scrolled into view before performing assertions or interactions
+- Cypress’s built-in retry mechanism is used instead of fixed waits
+
+# Current limitations:
+
+- Page readiness is not fully validated using `document.readyState`
+- Network-level control using `cy.intercept()` is not yet implemented
+
+# Cross-Browser Testing
+
+You can run tests across browsers using:
+
+npm run test:chrome
+npm run test:edge
+npm run test:firefox
+
+- Note:
+The CI pipeline currently runs tests on Chrome and Edge.
+
+# Reporting
+Generate reports
+npm run test
+npm run report:merge
+npm run report:generate
+Output
+cypress/reports/report.html
+
+Reports include:
+
+- HTML test reports
+- Screenshots for failures
+- Test execution videos
+
+# CI/CD Integration
+
+The framework includes a GitHub Actions workflow:
+
+.github/workflows/ui-tests.yml
+
+It automatically runs on:
+
+Push
+Pull requests
+
+And:
+
+Executes tests
+Runs across browsers
+Uploads screenshots and videos as artifacts
+
+📌 Assumptions & Trade-offs
+
+One of the key challenges in this project is the login flow, which is protected by CAPTCHA and OTP/MFA verification.
+
+While trying to automate authentication, I explored the API layer directly. However:
+
+The login request returned “Captcha validation failed”
+The MFA endpoint returned “OTP hasn't been requested”
+
+This clearly shows that the system is designed to prevent automated login attempts, and authentication cannot proceed without real user interaction.
+
+Since CAPTCHA and OTP are intentional security mechanisms, I did not attempt to bypass or simulate them. Doing so would not reflect real-world or ethical testing practices.
+
+Instead, the framework focuses on publicly accessible flows, where automation is stable and meaningful.
+
+For production-grade automation, a better approach would be:
+
+- Using a pre-authenticated session provided by QA
+- Using a test account with CAPTCHA/OTP disabled
+- Running tests in a controlled lower environment
+
+
+# How to Extend the Framework
+
+- Add new page objects → cypress/pageObjects
+- Add test data → cypress/fixtures
+- Add new test cases → cypress/e2e
+- Extend reusable commands → cypress/support/commands.js
+
+#Author
+
+Gayathri
+
+# Key Highlights
+- Clean and scalable project structure
+- Practical use of Cypress for real-world UI testing
+- CI/CD ready
+- Cross-browser support
+- Designed with real constraints and trade-offs in mind
+
+# Repository Link
+
+https://github.com/gayathri89-demo/mb-trading-ui-automation
