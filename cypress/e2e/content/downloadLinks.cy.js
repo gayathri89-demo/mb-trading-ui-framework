@@ -1,46 +1,35 @@
-
-
-
 describe("Download Links", () => {
   beforeEach(() => {
     cy.visit("https://mb.io/en-AE/");
     cy.waitForPage();
   });
 
-  it("validates Download the app button", () => {
+  it("validates Download the app button and redirect to App Store or Google Play", () => {
     cy.get('a[data-slot="button"][data-button-type="download"]')
-  .contains('Download the app')
-  .should('be.visible')
-  .invoke('removeAttr', 'target')
-  .click();
-  });
-  
- it("validates Download section links redirect to App Store or Google Play", () => {
-
-    cy.contains('Download the app')
+      .contains("Download the app")
       .scrollIntoView()
-      .should('be.visible');
-
-    cy.get('a[data-slot="button"][data-button-type="download"]')
-      .should('have.attr', 'href')
+      .should("be.visible")
+      .and("have.attr", "href")
       .then((url) => {
+        expect(url).to.not.be.empty;
+        cy.log(`Download button href: ${url}`);
 
         cy.request({
           url,
-          followRedirect: false
+          followRedirect: false,
         }).then((res) => {
-
           expect(res.status).to.be.oneOf([301, 302]);
 
-          const location = res.headers.location;
+          const redirectUrl = res.headers.location;
+          expect(redirectUrl).to.match(/apple\.com|play\.google\.com/);
 
-          // ✅ Accept either Apple OR Play Store
-          expect(location).to.match(/apple\.com|play\.google\.com/);
-
-          cy.log('Redirected to:', location);
+          cy.log(`Redirected to: ${redirectUrl}`);
         });
       });
 
+    cy.get('a[data-slot="button"][data-button-type="download"]')
+      .contains("Download the app")
+      .invoke("removeAttr", "target")
+      .click();
   });
-
 });
