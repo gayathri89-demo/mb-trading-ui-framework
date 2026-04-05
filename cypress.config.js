@@ -3,6 +3,13 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     baseUrl: "https://trade.mb.io",
+      setupNodeEvents(on, config) {
+      if (config.browser && config.browser.name === "firefox") {
+        config.video = false;
+        config.videoCompression = false;
+      }
+      return config;
+    },
     specPattern: "cypress/e2e/**/*.cy.js",
     supportFile: "cypress/support/e2e.js",
     viewportWidth: 1440,
