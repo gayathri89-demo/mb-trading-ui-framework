@@ -25,15 +25,18 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options
 // ) => { ... })
 Cypress.Commands.add("openHomepage", () => {
-  cy.visit("/en-AE", { failOnStatusCode: false });
+  cy.visit(Cypress.env("tradeHomepageUrl"));
+  cy.waitForPage();
 });
 
 Cypress.Commands.add("openSpotTrading", () => {
-  cy.visit("/explore", { failOnStatusCode: false });
+  cy.visit(Cypress.env("exploreUrl"));
+  cy.waitForPage();
 });
 
 Cypress.Commands.add("openBannersPage", () => {
-  cy.visit("mb.io/en-AE/", { failOnStatusCode: false });
+  cy.visit(Cypress.env("bannersUrl"));
+  cy.waitForPage();
 });
 
 Cypress.Commands.add("waitForPage", () => {
