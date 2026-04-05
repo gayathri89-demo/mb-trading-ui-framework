@@ -5,11 +5,20 @@ describe("Marketing Banners", () => {
     cy.document().its("readyState").should("eq", "complete");
   });
 
-  it("validates the marketing banner headline", () => {
-    const bannerText = /Unblemished\. Unstoppable\. United\./i;
+ it("validates marketing banner headlines", () => {
+  cy.fixture("content").then((data) => {
 
-    cy.contains("h3", bannerText, { timeout: 20000 })
-      .should("exist")
-      .and("contain.text", "Unblemished");
+    data.marketingBannerHeadline.forEach((bannerText) => {
+
+      cy.contains("h1, h2, h3, p, div", bannerText, {
+        matchCase: false,
+        timeout: 20000
+      })
+        .scrollIntoView()
+        .should("be.visible");
+
+    });
+
+  });
   });
 });
