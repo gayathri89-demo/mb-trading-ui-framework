@@ -32,6 +32,10 @@ Cypress.Commands.add("openSpotTrading", () => {
   cy.visit("/explore", { failOnStatusCode: false });
 });
 
+Cypress.Commands.add("openBannersPage", () => {
+  cy.visit("mb.io/en-AE/", { failOnStatusCode: false });
+});
+
 Cypress.Commands.add("waitForPage", () => {
   cy.get("body").should("be.visible");
 });

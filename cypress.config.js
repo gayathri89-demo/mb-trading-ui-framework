@@ -27,6 +27,12 @@ module.exports = defineConfig({
       overwrite: false,
       html: false,
       json: true
+    },
+       env: {
+      tradeHomepageUrl: "https://trade.mb.io/homepage",
+      exploreUrl: "https://mb.io/en-AE/explore",
+      bannersUrl: "https://mb.io/en-AE"
     }
+
   }
 });
