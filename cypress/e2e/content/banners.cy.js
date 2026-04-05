@@ -1,6 +1,7 @@
 describe("Marketing Banners", () => {
   beforeEach(() => {
-    cy.visit("https://mb.io/en-AE/");
+    //cy.visit("https://mb.io/en-AE/");
+    cy.openBannersPage();
     cy.waitForPage();
     cy.document().its("readyState").should("eq", "complete");
   });

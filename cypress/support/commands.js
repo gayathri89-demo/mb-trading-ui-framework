@@ -39,6 +39,11 @@ Cypress.Commands.add("openBannersPage", () => {
   cy.waitForPage();
 });
 
+Cypress.Commands.add("openCompanyPage", () => {
+  cy.visit(Cypress.env("companyUrl"));
+  cy.waitForPage();
+});
+
 Cypress.Commands.add("waitForPage", () => {
   cy.get("body").should("be.visible");
 });

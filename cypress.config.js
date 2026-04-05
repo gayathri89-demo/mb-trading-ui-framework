@@ -13,7 +13,8 @@ module.exports = defineConfig({
      env: {
       tradeHomepageUrl: "https://trade.mb.io/homepage",
       exploreUrl: "https://mb.io/en-AE/explore",
-      bannersUrl: "https://mb.io/en-AE"
+      bannersUrl: "https://mb.io/en-AE",
+      companyUrl: "https://mb.io/en-AE/company"
     },
     specPattern: "cypress/e2e/**/*.cy.js",
     supportFile: "cypress/support/e2e.js",
