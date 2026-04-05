@@ -1,9 +1,13 @@
+import NavigationPage from "../../pageObjects/NavigationPage";
+
 describe('Spot trading section', () => {
   beforeEach(() => {
     cy.visit('https://mb.io/en-AE/explore');
   });
 
   it('displays trading pairs correctly', () => {
+    NavigationPage.clickMenuItem('Explore');
+    
     cy.contains('section', /Today’s top crypto prices|Spot Trading|Top crypto prices/i)
       .scrollIntoView()
       .should('be.visible')

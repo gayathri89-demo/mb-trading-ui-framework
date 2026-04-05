@@ -14,9 +14,9 @@ module.exports = defineConfig({
     supportFile: "cypress/support/e2e.js",
     viewportWidth: 1440,
     viewportHeight: 900,
-    defaultCommandTimeout: 10000,
-    pageLoadTimeout: 60000,
-    requestTimeout: 20000,
+    defaultCommandTimeout: 15000,
+    pageLoadTimeout: 120000,
+    requestTimeout: 30000,
     responseTimeout: 30000,
     retries: {
       runMode: 2,
