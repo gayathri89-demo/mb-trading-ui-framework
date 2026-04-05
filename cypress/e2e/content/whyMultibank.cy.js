@@ -6,7 +6,9 @@ describe("Why MultiBank", () => {
     cy.waitForPage();
   });
 
-  it("validates the Why MultiBank section", () => {
-    AboutPage.verifyWhyMultibank();
-  });
+   it("validates the Why MultiBank section", () => {
+    cy.fixture("content").then((data) => {
+      AboutPage.verifyWhyMultibank(data.whyMultibankHeading);
+    });
+    });
 });
