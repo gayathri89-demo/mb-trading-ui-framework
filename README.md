@@ -229,6 +229,60 @@ Gayathri
 - Cross-browser support
 - Designed with real constraints and trade-offs in mind
 
+# Performance Testing (Lighthouse CI)
+
+Performance auditing is implemented using Lighthouse CI to evaluate the quality and performance of public user-facing pages.
+
+- Coverage
+
+The following deterministic public pages are audited:
+
+Homepage → https://mb.io/en-AE
+Explore page → https://mb.io/en-AE/explore
+
+- Implementation
+
+Lighthouse CI configuration is maintained in:
+
+.lighthouserc.json
+
+CI workflow is defined in:
+
+.github/workflows/lighthouse.yml
+
+- Performance audits are executed automatically on:
+every push
+pull requests
+
+- Metrics Evaluated
+
+The following Lighthouse categories are validated:
+
+1.  Performance
+2.  Accessibility
+3.  Best Practices
+4.  SEO
+
+- Viewing Reports
+
+Lighthouse reports are generated during CI runs and uploaded to temporary public storage.
+
+To view reports:
+
+1. Go to GitHub → Actions
+2. Open Lighthouse CI workflow
+3. Select a run
+4. Open the step: Run Lighthouse CI
+5. Click the generated report link
+
+- Design Decision for Performance testing
+
+Performance testing is implemented separately from Cypress functional tests to:
+
+- maintain separation of concerns
+- avoid flakiness in UI test execution
+- align with real-world CI practices
+
 # Repository Link
 
 https://github.com/gayathri89-demo/mb-trading-ui-automation
