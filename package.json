@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "cy:open": "cypress open",
-  "test": "cypress run",
-  "test:chrome": "cypress run --browser chrome",
-  "test:edge": "cypress run --browser edge",
-  "test:firefox": "cypress run --browser firefox",
-  "test:navigation": "cypress run --spec \"cypress/e2e/navigation/**/*.cy.js\"",
-  "test:trading": "cypress run --spec \"cypress/e2e/trading/**/*.cy.js\"",
-  "test:content": "cypress run --spec \"cypress/e2e/content/**/*.cy.js\""
-},
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run",
+    "report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/merged.json",
+    "report:generate": "marge cypress/reports/merged.json -f report -o cypress/reports",
+    "test:chrome": "cypress run --browser chrome",
+    "test:edge": "cypress run --browser edge",
+    "test:firefox": "cypress run --browser firefox",
+    "test:navigation": "cypress run --spec \"cypress/e2e/navigation/**/*.cy.js\"",
+    "test:trading": "cypress run --spec \"cypress/e2e/trading/**/*.cy.js\"",
+    "test:content": "cypress run --spec \"cypress/e2e/content/**/*.cy.js\""
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
