@@ -25,7 +25,11 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options
 // ) => { ... })
 Cypress.Commands.add("openHomepage", () => {
-  cy.visit("/homepage", { failOnStatusCode: false });
+  cy.visit("/en-AE", { failOnStatusCode: false });
+});
+
+Cypress.Commands.add("openSpotTrading", () => {
+  cy.visit("/explore", { failOnStatusCode: false });
 });
 
 Cypress.Commands.add("waitForPage", () => {

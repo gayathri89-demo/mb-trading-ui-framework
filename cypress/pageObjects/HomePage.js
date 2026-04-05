@@ -2,8 +2,9 @@ import BasePage from "./BasePage";
 
 class HomePage extends BasePage {
   open() {
-    this.visit("https://mb.io/");
+    this.visit("https://mb.io");
   }
+
 
   verifyHero(texts) {
     texts.forEach((text) => this.verifyText(text));

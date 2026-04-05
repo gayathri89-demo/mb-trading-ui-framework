@@ -1,4 +1,7 @@
 {
-  "sections": ["Spot market"],
-  "optionalLabels": ["Markets at your fingertips"]
+  "sectionTitle": "Spot market",
+  "optionalCategoryLabels": ["All", "Trending", "Gainers", "Losers"],
+  "minimumRowsPerCategory": 1,
+"categories": ["All", "Hot", "Gainers", "Losers"]
+
 }
