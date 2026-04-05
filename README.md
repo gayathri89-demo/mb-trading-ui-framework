@@ -118,8 +118,12 @@ Generate reports
 npm run test
 npm run report:merge
 npm run report:generate
+
 Output
-cypress/reports/report.html
+- cypress/reports/report.html
+- Mochawesome JSON output
+- Merged report data
+- HTML report, screenshots, and videos.
 
 Reports include:
 
@@ -144,7 +148,7 @@ Executes tests
 Runs across browsers
 Uploads screenshots and videos as artifacts
 
-📌 Assumptions & Trade-offs
+# Assumptions & Trade-offs (Creative solutions to common automation challenges)
 
 One of the key challenges in this project is the login flow, which is protected by CAPTCHA and OTP/MFA verification.
 
@@ -165,6 +169,43 @@ For production-grade automation, a better approach would be:
 - Using a test account with CAPTCHA/OTP disabled
 - Running tests in a controlled lower environment
 
+# Engineering Decisions & Problem Solving
+
+This framework demonstrates practical solutions to real-world automation challenges:
+
+- Deterministic Test Scope
+
+Automation focuses on public, stable user flows on mb.io, including:
+
+- Navigation and layout validation
+- Spot trading data visibility (public explore page)
+- Marketing content and download CTA validation
+- Company content validation (e.g., “Why MultiBank Group”)
+- Download app link that navigates to playstore/app store
+
+These flows are fully deterministic and suitable for reliable UI automation.
+
+# Handling CAPTCHA & OTP (Authentication Limitation)
+
+The authenticated trading platform (trade.mb.io) is protected by:
+
+- CAPTCHA (bot protection)
+- OTP (multi-factor authentication)
+
+These mechanisms are intentionally designed to prevent automated access and cannot be reliably bypassed in a standard UI automation framework without:
+
+- a test-only environment with CAPTCHA disabled
+- pre-authenticated sessions
+- backend-supported test tokens or mocks
+
+### Therefore, login and authenticated trading flows are intentionally excluded.
+
+This is a deliberate engineering decision, not a missing feature, ensuring:
+
+test stability
+reproducibility
+alignment with real-world automation best practices
+
 
 # How to Extend the Framework
 
@@ -173,7 +214,11 @@ For production-grade automation, a better approach would be:
 - Add new test cases → cypress/e2e
 - Extend reusable commands → cypress/support/commands.js
 
-#Author
+# Cloud/Grid Execution
+
+Not fully implemented; current framework supports cross-browser execution and a GitHub Actions matrix and can be extended to BrowserStack, Sauce Labs, or Cypress Cloud.
+
+# Author
 
 Gayathri
 
