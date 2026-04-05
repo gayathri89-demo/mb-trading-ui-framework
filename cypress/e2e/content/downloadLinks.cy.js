@@ -1,6 +1,6 @@
 describe("Download Links", () => {
   beforeEach(() => {
-    cy.visit("https://mb.io/en-AE/");
+    cy.visit(Cypress.env("bannersUrl"));
     cy.waitForPage();
   });
 
@@ -14,6 +14,10 @@ describe("Download Links", () => {
         expect(url).to.not.be.empty;
         cy.log(`Download button href: ${url}`);
 
+    cy.get('a[data-slot="button"][data-button-type="download"]')
+      .contains("Download the app")
+      .invoke("removeAttr", "target")
+      .click();
         cy.request({
           url,
           followRedirect: false,
@@ -26,10 +30,5 @@ describe("Download Links", () => {
           cy.log(`Redirected to: ${redirectUrl}`);
         });
       });
-
-    cy.get('a[data-slot="button"][data-button-type="download"]')
-      .contains("Download the app")
-      .invoke("removeAttr", "target")
-      .click();
   });
 });
