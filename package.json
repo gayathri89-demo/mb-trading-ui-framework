@@ -7,8 +7,8 @@
     "cy:open": "cypress open",
     "test": "cypress run",
     "report:merge": "mochawesome-merge \"cypress/reports/mochawesome/*.json\" -o cypress/reports/merged.json",
-  "report:generate": "marge cypress/reports/merged.json -f report -o cypress/reports",
-  "test:report": "npm run test && npm run report:merge && npm run report:generate",
+    "report:generate": "marge cypress/reports/merged.json -f report -o cypress/reports",
+    "test:report": "npm run test && npm run report:merge && npm run report:generate",
     "test:chrome": "cypress run --browser chrome",
     "test:edge": "cypress run --browser edge",
     "test:firefox": "cypress run --browser firefox",
@@ -21,6 +21,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
     "cypress": "^15.13.0",
     "cypress-multi-reporters": "^2.0.5",
     "mochawesome": "^7.1.4",
