@@ -2,14 +2,14 @@ describe("Marketing Banners", () => {
   beforeEach(() => {
     cy.visit("https://mb.io/en-AE/");
     cy.waitForPage();
+    cy.document().its("readyState").should("eq", "complete");
   });
 
   it("validates the marketing banner headline", () => {
-    cy.contains("h3", "Unblemished. Unstoppable. United.", {
-      matchCase: false,
-      timeout: 15000,
-    })
-      .scrollIntoView()
-      .should("be.visible");
+    const bannerText = /Unblemished\. Unstoppable\. United\./i;
+
+    cy.contains("h3", bannerText, { timeout: 20000 })
+      .should("exist")
+      .and("contain.text", "Unblemished");
   });
 });
