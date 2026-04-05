@@ -10,6 +10,11 @@ module.exports = defineConfig({
       }
       return config;
     },
+     env: {
+      tradeHomepageUrl: "https://trade.mb.io/homepage",
+      exploreUrl: "https://mb.io/en-AE/explore",
+      bannersUrl: "https://mb.io/en-AE"
+    },
     specPattern: "cypress/e2e/**/*.cy.js",
     supportFile: "cypress/support/e2e.js",
     viewportWidth: 1440,
@@ -35,11 +40,5 @@ module.exports = defineConfig({
       html: false,
       json: true
     },
-       env: {
-      tradeHomepageUrl: "https://trade.mb.io/homepage",
-      exploreUrl: "https://mb.io/en-AE/explore",
-      bannersUrl: "https://mb.io/en-AE"
-    }
-
   }
 });
