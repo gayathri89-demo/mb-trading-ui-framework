@@ -2,7 +2,8 @@ import NavigationPage from "../../pageObjects/NavigationPage";
 
 describe('Spot trading section', () => {
   beforeEach(() => {
-    cy.visit('https://mb.io/en-AE/explore');
+    cy.exploreUrl = Cypress.env("exploreUrl");
+    cy.visit(cy.exploreUrl);
   });
 
   it('displays trading pairs correctly', () => {
