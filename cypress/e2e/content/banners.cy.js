@@ -2,6 +2,7 @@ describe("Marketing Banners", () => {
   beforeEach(() => {
     cy.openBannersPage();
     cy.waitForPage();
+    cy.activatePage();
     cy.document().its("readyState").should("eq", "complete");
   });
 
@@ -14,11 +15,17 @@ describe("Marketing Banners", () => {
         matchCase: false,
         timeout: 20000
       })
+        .should("exist")
         .scrollIntoView()
-        .should("be.visible");
+      //  .should("be.visible");
 
-    });
+      cy.contains("h3", bannerText, {
+      timeout: 20000,
+      matchCase: false
+      }).should("be.visible");
 
-  });
+      });
+
+   });
   });
 });

@@ -48,6 +48,10 @@ Cypress.Commands.add("waitForPage", () => {
   cy.get("body").should("be.visible");
 });
 
+Cypress.Commands.add("activatePage", () => {
+  cy.get("body").should("be.visible").click(0, 0, { force: true });
+});
+
 Cypress.Commands.add("scrollToText", (text) => {
   cy.contains(text, { matchCase: false }).scrollIntoView().should("be.visible");
 });
