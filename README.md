@@ -283,6 +283,14 @@ Performance testing is implemented separately from Cypress functional tests to:
 - avoid flakiness in UI test execution
 - align with real-world CI practices
 
+# Test Evidence
+
+- Sample Test Execution Report
+A sample Mochawesome HTML report is included in the repository:
+
+cypress/reports/merged.json
+cypress/reports/report.html
+
 # Repository Link
 
 https://github.com/gayathri89-demo/mb-trading-ui-automation
