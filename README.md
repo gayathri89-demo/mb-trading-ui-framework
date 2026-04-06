@@ -18,6 +18,7 @@ Through this project, I’ve implemented:
 - JavaScript (ES6)
 - Mochawesome (Reporting)
 - GitHub Actions (CI/CD)
+- Performance (Using LightHouse)
 
 # Project Structure
 
