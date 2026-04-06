@@ -20,21 +20,55 @@ Through this project, I’ve implemented:
 - GitHub Actions (CI/CD)
 
 # Project Structure
+
 mb-trading-ui-framework/
 ├─ cypress/
-│  ├─ e2e/
+│  ├─ e2e/                         # Test specs organized by feature
 │  │  ├─ navigation/
+│  │  │  └─ topNavigation.cy.js
 │  │  ├─ trading/
+│  │  │  └─ spotTrading.cy.js
 │  │  └─ content/
-│  ├─ fixtures/
-│  ├─ pageObjects/
-│  ├─ support/
-│  ├─ reports/
-│  ├─ screenshots/
-│  └─ videos/
-├─ cypress.config.js
-├─ package.json
-└─ README.md
+│  │     ├─ banners.cy.js
+│  │     ├─ downloadLinks.cy.js
+│  │     ├─ homepageSmoke.cy.js
+│  │     └─ whyMultibank.cy.js
+│  │
+│  ├─ pageObjects/                 # Page Object Model classes
+│  │  ├─ BasePage.js
+│  │  ├─ HomePage.js
+│  │  ├─ NavigationPage.js
+│  │  ├─ SpotTradingPage.js
+│  │  └─ AboutPage.js
+│  │
+│  ├─ fixtures/             # External test data (no hardcoding)
+│  │  ├─ navigation.json
+│  │  ├─ trading.json
+│  │  ├─ content.json
+│  │  └─ example.json
+│  │
+│  ├─ support/                    # Custom commands & global config
+│  │  ├─ commands.js
+│  │  └─ e2e.js
+│  │
+│  ├─ reports/                    # Mochawesome reports
+│  │  ├─ mochawesome/
+│  │  ├─ merged.json
+│  │  └─ report.html
+│  │
+│  ├─ screenshots/                # Failure screenshots
+│  └─ videos/                     # Test execution recordings
+│
+├─ .github/
+│  └─ workflows/
+│     ├─ ui-tests.yml             # Cypress CI execution
+│     └─ lighthouse.yml           # Performance audit (bonus)
+│
+├─ cypress.config.js              # Cypress configuration
+├─ .lighthouserc.json            # Lighthouse config
+├─ package.json                  # Dependencies & scripts
+├─ README.md                     # Documentation
+└─ .gitignore
 
 The structure is designed to be easy to scale, with clear separation between test logic, data, and reusable components.
 
