@@ -1,0 +1,1206 @@
+{
+  "stats": {
+    "suites": 18,
+    "tests": 24,
+    "passes": 24,
+    "pending": 0,
+    "failures": 0,
+    "testsRegistered": 24,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2026-04-06T04:10:07.895Z",
+    "end": "2026-04-06T04:23:12.265Z",
+    "duration": 784370
+  },
+  "results": [
+    {
+      "uuid": "9bb252db-3689-4729-a744-f41a4f868c77",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\banners.cy.js",
+      "file": "cypress\\e2e\\content\\banners.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "35ccf4b5-e746-47a2-a673-586a1f6e0461",
+          "title": "Marketing Banners",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validates marketing banner headlines",
+              "fullTitle": "Marketing Banners validates marketing banner headlines",
+              "timedOut": null,
+              "duration": 1833,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"content\").then(data => {\n  data.marketingBannerHeadline.forEach(bannerText => {\n    cy.contains(\"h1, h2, h3, p, div\", bannerText, {\n      matchCase: false,\n      timeout: 20000\n    }).should(\"exist\").scrollIntoView();\n    //  .should(\"be.visible\");\n    cy.contains(\"h3\", bannerText, {\n      timeout: 20000,\n      matchCase: false\n    }).should(\"be.visible\");\n  });\n});",
+              "err": {},
+              "uuid": "39eb121d-7544-48b2-8763-bc2764a10f39",
+              "parentUUID": "35ccf4b5-e746-47a2-a673-586a1f6e0461",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "39eb121d-7544-48b2-8763-bc2764a10f39"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1833,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "af63bc87-a870-46a1-b583-e81a731a2945",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\downloadLinks.cy.js",
+      "file": "cypress\\e2e\\content\\downloadLinks.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "341b7adb-d0a5-4cc5-b2c9-1a6ea76d62ce",
+          "title": "Download Links",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validates Download the app button and redirect to App Store or Google Play",
+              "fullTitle": "Download Links validates Download the app button and redirect to App Store or Google Play",
+              "timedOut": null,
+              "duration": 2901,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('a[data-slot=\"button\"][data-button-type=\"download\"]').contains(\"Download the app\").scrollIntoView().should(\"be.visible\").and(\"have.attr\", \"href\").then(url => {\n  expect(url).to.not.be.empty;\n  cy.log(`Download button href: ${url}`);\n  cy.get('a[data-slot=\"button\"][data-button-type=\"download\"]').contains(\"Download the app\").invoke(\"removeAttr\", \"target\").click();\n  cy.request({\n    url,\n    followRedirect: false\n  }).then(res => {\n    expect(res.status).to.be.oneOf([301, 302]);\n    const redirectUrl = res.headers.location;\n    expect(redirectUrl).to.match(/apple\\.com|play\\.google\\.com/);\n    cy.log(`Redirected to: ${redirectUrl}`);\n  });\n});",
+              "err": {},
+              "uuid": "b5993ceb-c027-48c5-b2d2-866ed03cee7e",
+              "parentUUID": "341b7adb-d0a5-4cc5-b2c9-1a6ea76d62ce",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b5993ceb-c027-48c5-b2d2-866ed03cee7e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2901,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "85c2064a-defa-47f2-a325-513e7bfee689",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\homepageSmoke.cy.js",
+      "file": "cypress\\e2e\\content\\homepageSmoke.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "29a6bda4-43c7-46dd-9752-6c8a80460560",
+          "title": "Homepage Smoke",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should load homepage",
+              "fullTitle": "Homepage Smoke should load homepage",
+              "timedOut": null,
+              "duration": 1812,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_HomePage.default.open();\ncy.waitForPage();\ncy.get(\"body\").should(\"be.visible\");",
+              "err": {},
+              "uuid": "e03b1eef-eca0-46de-9478-c5184b38c5b3",
+              "parentUUID": "29a6bda4-43c7-46dd-9752-6c8a80460560",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e03b1eef-eca0-46de-9478-c5184b38c5b3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1812,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "5682dd7e-5c0c-46af-9ae4-5bd3d19f362d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\whyMultibank.cy.js",
+      "file": "cypress\\e2e\\content\\whyMultibank.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b177efa1-d7f2-497a-bdea-4ff60e2ec4af",
+          "title": "Why MultiBank",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validates the Why MultiBank section",
+              "fullTitle": "Why MultiBank validates the Why MultiBank section",
+              "timedOut": null,
+              "duration": 1682,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"content\").then(data => {\n  _AboutPage.default.verifyWhyMultibank(data.whyMultibankHeading);\n});",
+              "err": {},
+              "uuid": "25a3cb0f-a31a-4cab-9c2f-fad2c82291ea",
+              "parentUUID": "b177efa1-d7f2-497a-bdea-4ff60e2ec4af",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "25a3cb0f-a31a-4cab-9c2f-fad2c82291ea"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1682,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "04cb81c7-97df-4478-ba26-631e3c05d147",
+      "title": "",
+      "fullFile": "cypress\\e2e\\trading\\spotTrading.cy.js",
+      "file": "cypress\\e2e\\trading\\spotTrading.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d26b350b-5bde-41e9-9d67-aa609785cb58",
+          "title": "Spot trading section",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "displays trading pairs correctly",
+              "fullTitle": "Spot trading section displays trading pairs correctly",
+              "timedOut": null,
+              "duration": 4677,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_NavigationPage.default.clickMenuItem('Explore');\ncy.contains('section', /Today’s top crypto prices|Spot Trading|Top crypto prices/i).scrollIntoView().should('be.visible').as('spotSection');\ncy.get('@spotSection').should('contain.text', 'MBG'); // this is visible in your screenshot\ncy.get('@spotSection').invoke('text').then(text => {\n  console.log('Section text:', text);\n});",
+              "err": {},
+              "uuid": "61e01a7a-c4f0-4710-bc10-780aa3cbf399",
+              "parentUUID": "d26b350b-5bde-41e9-9d67-aa609785cb58",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "61e01a7a-c4f0-4710-bc10-780aa3cbf399"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4677,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "1f849041-524d-412e-86c2-37264fd633e7",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\banners.cy.js",
+      "file": "cypress\\e2e\\content\\banners.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b8337819-ea9c-4b98-9841-a7a5db193749",
+          "title": "Marketing Banners",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validates marketing banner headlines",
+              "fullTitle": "Marketing Banners validates marketing banner headlines",
+              "timedOut": null,
+              "duration": 2844,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"content\").then(data => {\n  data.marketingBannerHeadline.forEach(bannerText => {\n    cy.contains(\"h1, h2, h3, p, div\", bannerText, {\n      matchCase: false,\n      timeout: 20000\n    }).should(\"exist\").scrollIntoView();\n    //  .should(\"be.visible\");\n    cy.contains(\"h3\", bannerText, {\n      timeout: 20000,\n      matchCase: false\n    }).should(\"be.visible\");\n  });\n});",
+              "err": {},
+              "uuid": "b212d259-4141-4f75-9dad-4e02ab12e4fb",
+              "parentUUID": "b8337819-ea9c-4b98-9841-a7a5db193749",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b212d259-4141-4f75-9dad-4e02ab12e4fb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2844,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "e09f29c2-25bf-4e95-9d88-1759715be389",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\downloadLinks.cy.js",
+      "file": "cypress\\e2e\\content\\downloadLinks.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f25c6416-f1ed-4ab3-81af-be5f2a74f6dd",
+          "title": "Download Links",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validates Download the app button and redirect to App Store or Google Play",
+              "fullTitle": "Download Links validates Download the app button and redirect to App Store or Google Play",
+              "timedOut": null,
+              "duration": 3822,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('a[data-slot=\"button\"][data-button-type=\"download\"]').contains(\"Download the app\").scrollIntoView().should(\"be.visible\").and(\"have.attr\", \"href\").then(url => {\n  expect(url).to.not.be.empty;\n  cy.log(`Download button href: ${url}`);\n  cy.get('a[data-slot=\"button\"][data-button-type=\"download\"]').contains(\"Download the app\").invoke(\"removeAttr\", \"target\").click();\n  cy.request({\n    url,\n    followRedirect: false\n  }).then(res => {\n    expect(res.status).to.be.oneOf([301, 302]);\n    const redirectUrl = res.headers.location;\n    expect(redirectUrl).to.match(/apple\\.com|play\\.google\\.com/);\n    cy.log(`Redirected to: ${redirectUrl}`);\n  });\n});",
+              "err": {},
+              "uuid": "b53109e7-5b7d-4f9f-ba5d-0e4501b96033",
+              "parentUUID": "f25c6416-f1ed-4ab3-81af-be5f2a74f6dd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b53109e7-5b7d-4f9f-ba5d-0e4501b96033"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3822,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "19fa5fb8-462d-45d2-9940-71a4e810c7cb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\homepageSmoke.cy.js",
+      "file": "cypress\\e2e\\content\\homepageSmoke.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "687f6e45-f127-4218-aa7c-324d53216b1a",
+          "title": "Homepage Smoke",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should load homepage",
+              "fullTitle": "Homepage Smoke should load homepage",
+              "timedOut": null,
+              "duration": 1633,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_HomePage.default.open();\ncy.waitForPage();\ncy.get(\"body\").should(\"be.visible\");",
+              "err": {},
+              "uuid": "b984e529-371a-41be-8ba8-5643971e93b2",
+              "parentUUID": "687f6e45-f127-4218-aa7c-324d53216b1a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b984e529-371a-41be-8ba8-5643971e93b2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1633,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "afc114b9-088f-42ed-a278-e39162096926",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\whyMultibank.cy.js",
+      "file": "cypress\\e2e\\content\\whyMultibank.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8a38f1df-17e7-4df5-8c85-a84458c3a77a",
+          "title": "Why MultiBank",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validates the Why MultiBank section",
+              "fullTitle": "Why MultiBank validates the Why MultiBank section",
+              "timedOut": null,
+              "duration": 2628,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"content\").then(data => {\n  _AboutPage.default.verifyWhyMultibank(data.whyMultibankHeading);\n});",
+              "err": {},
+              "uuid": "93c74802-c433-4377-b084-0b6a2b387ccc",
+              "parentUUID": "8a38f1df-17e7-4df5-8c85-a84458c3a77a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "93c74802-c433-4377-b084-0b6a2b387ccc"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2628,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "44cc2bfe-a186-4be5-b04f-2dd5e3b6a921",
+      "title": "",
+      "fullFile": "cypress\\e2e\\navigation\\topNavigation.cy.js",
+      "file": "cypress\\e2e\\navigation\\topNavigation.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e31d7dec-22a8-4979-9cf1-cb43e487372d",
+          "title": "Top Navigation Menu",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display the top navigation menu items",
+              "fullTitle": "Top Navigation Menu should display the top navigation menu items",
+              "timedOut": null,
+              "duration": 1780,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"navigation\").then(data => {\n  _NavigationPage.default.verifyHeaderVisible();\n  _NavigationPage.default.verifyMenuItems(data.topMenuItems);\n});",
+              "err": {},
+              "uuid": "d8346e9e-210d-4e8f-aceb-39bb8683d1e3",
+              "parentUUID": "e31d7dec-22a8-4979-9cf1-cb43e487372d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should have valid href values for clickable menu items",
+              "fullTitle": "Top Navigation Menu should have valid href values for clickable menu items",
+              "timedOut": null,
+              "duration": 2473,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"navigation\").then(data => {\n  data.clickableMenuItems.forEach(item => {\n    _NavigationPage.default.verifyMenuItemHref(item);\n  });\n});",
+              "err": {},
+              "uuid": "ac68ca5e-8c36-42fa-b083-704af645d2b1",
+              "parentUUID": "e31d7dec-22a8-4979-9cf1-cb43e487372d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should allow clicking clickable top navigation menu items",
+              "fullTitle": "Top Navigation Menu should allow clicking clickable top navigation menu items",
+              "timedOut": null,
+              "duration": 8203,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"navigation\").then(data => {\n  data.clickableMenuItems.forEach(item => {\n    cy.visit(\"https://mb.io/en-AE/explore\", {\n      failOnStatusCode: false\n    });\n    _NavigationPage.default.clickMenuItem(item);\n    cy.url().should(\"not.be.empty\");\n  });\n});",
+              "err": {},
+              "uuid": "b91cc06d-fa6d-4e0a-94df-d11c6e231b3a",
+              "parentUUID": "e31d7dec-22a8-4979-9cf1-cb43e487372d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d8346e9e-210d-4e8f-aceb-39bb8683d1e3",
+            "ac68ca5e-8c36-42fa-b083-704af645d2b1",
+            "b91cc06d-fa6d-4e0a-94df-d11c6e231b3a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12456,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "1de85a62-5cb4-42f9-b7b9-78915c2f2991",
+      "title": "",
+      "fullFile": "cypress\\e2e\\trading\\spotTrading.cy.js",
+      "file": "cypress\\e2e\\trading\\spotTrading.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c0d42368-7a50-4087-85be-cd5714273f00",
+          "title": "Spot trading section",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "displays trading pairs correctly",
+              "fullTitle": "Spot trading section displays trading pairs correctly",
+              "timedOut": null,
+              "duration": 5064,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_NavigationPage.default.clickMenuItem('Explore');\ncy.contains('section', /Today’s top crypto prices|Spot Trading|Top crypto prices/i).scrollIntoView().should('be.visible').as('spotSection');\ncy.get('@spotSection').should('contain.text', 'MBG'); // this is visible in your screenshot\ncy.get('@spotSection').invoke('text').then(text => {\n  console.log('Section text:', text);\n});",
+              "err": {},
+              "uuid": "c0b5021b-3540-4a10-a62d-84185ed9bd3f",
+              "parentUUID": "c0d42368-7a50-4087-85be-cd5714273f00",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c0b5021b-3540-4a10-a62d-84185ed9bd3f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5064,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "fcd7244d-589e-41d9-84c1-243b5c4a44cb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\trading\\spotTrading.cy.js",
+      "file": "cypress\\e2e\\trading\\spotTrading.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "795b3f90-f351-4abf-a564-b21bf0513274",
+          "title": "Spot trading section",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "displays trading pairs correctly",
+              "fullTitle": "Spot trading section displays trading pairs correctly",
+              "timedOut": null,
+              "duration": 6229,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_NavigationPage.default.clickMenuItem('Explore');\ncy.contains('section', /Today’s top crypto prices|Spot Trading|Top crypto prices/i).scrollIntoView().should('be.visible').as('spotSection');\ncy.get('@spotSection').should('contain.text', 'MBG'); // this is visible in your screenshot\ncy.get('@spotSection').invoke('text').then(text => {\n  console.log('Section text:', text);\n});",
+              "err": {},
+              "uuid": "e0e81781-5862-491c-a8d1-284e4c99a45b",
+              "parentUUID": "795b3f90-f351-4abf-a564-b21bf0513274",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e0e81781-5862-491c-a8d1-284e4c99a45b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6229,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "9dc7200b-3fde-4860-b724-0ab070131213",
+      "title": "",
+      "fullFile": "cypress\\e2e\\navigation\\topNavigation.cy.js",
+      "file": "cypress\\e2e\\navigation\\topNavigation.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "de8d6909-a4bf-49cf-a998-f31324d89dc7",
+          "title": "Top Navigation Menu",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display the top navigation menu items",
+              "fullTitle": "Top Navigation Menu should display the top navigation menu items",
+              "timedOut": null,
+              "duration": 2371,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"navigation\").then(data => {\n  _NavigationPage.default.verifyHeaderVisible();\n  _NavigationPage.default.verifyMenuItems(data.topMenuItems);\n});",
+              "err": {},
+              "uuid": "69b08796-24d4-477d-b398-c08dcbe200af",
+              "parentUUID": "de8d6909-a4bf-49cf-a998-f31324d89dc7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should have valid href values for clickable menu items",
+              "fullTitle": "Top Navigation Menu should have valid href values for clickable menu items",
+              "timedOut": null,
+              "duration": 2831,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"navigation\").then(data => {\n  data.clickableMenuItems.forEach(item => {\n    _NavigationPage.default.verifyMenuItemHref(item);\n  });\n});",
+              "err": {},
+              "uuid": "280a7445-ea24-46ad-bf0a-7d3f5cfe6aa0",
+              "parentUUID": "de8d6909-a4bf-49cf-a998-f31324d89dc7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should allow clicking clickable top navigation menu items",
+              "fullTitle": "Top Navigation Menu should allow clicking clickable top navigation menu items",
+              "timedOut": null,
+              "duration": 11121,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"navigation\").then(data => {\n  data.clickableMenuItems.forEach(item => {\n    cy.visit(\"https://mb.io/en-AE/explore\", {\n      failOnStatusCode: false\n    });\n    _NavigationPage.default.clickMenuItem(item);\n    cy.url().should(\"not.be.empty\");\n  });\n});",
+              "err": {},
+              "uuid": "f9046814-2cac-4222-b6a1-6ff38eb5e4c7",
+              "parentUUID": "de8d6909-a4bf-49cf-a998-f31324d89dc7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "69b08796-24d4-477d-b398-c08dcbe200af",
+            "280a7445-ea24-46ad-bf0a-7d3f5cfe6aa0",
+            "f9046814-2cac-4222-b6a1-6ff38eb5e4c7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 16323,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "abe4fd76-fa6b-4d1b-8f2a-8691c6d3c637",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\banners.cy.js",
+      "file": "cypress\\e2e\\content\\banners.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f4792bae-e57d-42c5-95fd-41b1614299c5",
+          "title": "Marketing Banners",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validates marketing banner headlines",
+              "fullTitle": "Marketing Banners validates marketing banner headlines",
+              "timedOut": null,
+              "duration": 3041,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"content\").then(data => {\n  data.marketingBannerHeadline.forEach(bannerText => {\n    cy.contains(\"h1, h2, h3, p, div\", bannerText, {\n      matchCase: false,\n      timeout: 20000\n    }).should(\"exist\").scrollIntoView();\n    //  .should(\"be.visible\");\n    cy.contains(\"h3\", bannerText, {\n      timeout: 20000,\n      matchCase: false\n    }).should(\"be.visible\");\n  });\n});",
+              "err": {},
+              "uuid": "3cec33af-39c7-4236-a8d5-9194e79a0474",
+              "parentUUID": "f4792bae-e57d-42c5-95fd-41b1614299c5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "3cec33af-39c7-4236-a8d5-9194e79a0474"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3041,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "d262a8d4-5dba-4a26-9917-de5b8f8e536b",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\downloadLinks.cy.js",
+      "file": "cypress\\e2e\\content\\downloadLinks.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5aeb0fec-768b-475d-8ebc-7fdea2fdc81c",
+          "title": "Download Links",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validates Download the app button and redirect to App Store or Google Play",
+              "fullTitle": "Download Links validates Download the app button and redirect to App Store or Google Play",
+              "timedOut": null,
+              "duration": 3551,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('a[data-slot=\"button\"][data-button-type=\"download\"]').contains(\"Download the app\").scrollIntoView().should(\"be.visible\").and(\"have.attr\", \"href\").then(url => {\n  expect(url).to.not.be.empty;\n  cy.log(`Download button href: ${url}`);\n  cy.get('a[data-slot=\"button\"][data-button-type=\"download\"]').contains(\"Download the app\").invoke(\"removeAttr\", \"target\").click();\n  cy.request({\n    url,\n    followRedirect: false\n  }).then(res => {\n    expect(res.status).to.be.oneOf([301, 302]);\n    const redirectUrl = res.headers.location;\n    expect(redirectUrl).to.match(/apple\\.com|play\\.google\\.com/);\n    cy.log(`Redirected to: ${redirectUrl}`);\n  });\n});",
+              "err": {},
+              "uuid": "2f894e7c-376e-4932-8e09-8c224e520c1b",
+              "parentUUID": "5aeb0fec-768b-475d-8ebc-7fdea2fdc81c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2f894e7c-376e-4932-8e09-8c224e520c1b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3551,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "b030ab59-4298-4310-bad5-76d4334b36fb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\homepageSmoke.cy.js",
+      "file": "cypress\\e2e\\content\\homepageSmoke.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e8bb830e-a83f-45d1-b8ef-1c1bec678c3f",
+          "title": "Homepage Smoke",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should load homepage",
+              "fullTitle": "Homepage Smoke should load homepage",
+              "timedOut": null,
+              "duration": 2192,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_HomePage.default.open();\ncy.waitForPage();\ncy.get(\"body\").should(\"be.visible\");",
+              "err": {},
+              "uuid": "5adf5d90-cd87-4d88-8c34-4ae746a279ff",
+              "parentUUID": "e8bb830e-a83f-45d1-b8ef-1c1bec678c3f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5adf5d90-cd87-4d88-8c34-4ae746a279ff"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2192,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "75be1f76-bc01-473c-ba84-c0f49e206363",
+      "title": "",
+      "fullFile": "cypress\\e2e\\content\\whyMultibank.cy.js",
+      "file": "cypress\\e2e\\content\\whyMultibank.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "745db2e1-ee2d-41e0-9a8b-486ecb448790",
+          "title": "Why MultiBank",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validates the Why MultiBank section",
+              "fullTitle": "Why MultiBank validates the Why MultiBank section",
+              "timedOut": null,
+              "duration": 1310,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"content\").then(data => {\n  _AboutPage.default.verifyWhyMultibank(data.whyMultibankHeading);\n});",
+              "err": {},
+              "uuid": "ce865a46-3e0a-4f02-8b84-f6d45a8f0cb4",
+              "parentUUID": "745db2e1-ee2d-41e0-9a8b-486ecb448790",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ce865a46-3e0a-4f02-8b84-f6d45a8f0cb4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1310,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "38a8797a-f558-4697-835b-75697eff7cb5",
+      "title": "",
+      "fullFile": "cypress\\e2e\\navigation\\topNavigation.cy.js",
+      "file": "cypress\\e2e\\navigation\\topNavigation.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "77ec0c9a-fc42-4e78-ae00-821b65e06cf3",
+          "title": "Top Navigation Menu",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should display the top navigation menu items",
+              "fullTitle": "Top Navigation Menu should display the top navigation menu items",
+              "timedOut": null,
+              "duration": 2280,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"navigation\").then(data => {\n  _NavigationPage.default.verifyHeaderVisible();\n  _NavigationPage.default.verifyMenuItems(data.topMenuItems);\n});",
+              "err": {},
+              "uuid": "61ce5b46-d5df-4311-8a1b-633fe6c2155d",
+              "parentUUID": "77ec0c9a-fc42-4e78-ae00-821b65e06cf3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should have valid href values for clickable menu items",
+              "fullTitle": "Top Navigation Menu should have valid href values for clickable menu items",
+              "timedOut": null,
+              "duration": 2717,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"navigation\").then(data => {\n  data.clickableMenuItems.forEach(item => {\n    _NavigationPage.default.verifyMenuItemHref(item);\n  });\n});",
+              "err": {},
+              "uuid": "80e82ecd-798e-46bb-9f7a-55aaada4115e",
+              "parentUUID": "77ec0c9a-fc42-4e78-ae00-821b65e06cf3",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should allow clicking clickable top navigation menu items",
+              "fullTitle": "Top Navigation Menu should allow clicking clickable top navigation menu items",
+              "timedOut": null,
+              "duration": 7519,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"navigation\").then(data => {\n  data.clickableMenuItems.forEach(item => {\n    cy.visit(\"https://mb.io/en-AE/explore\", {\n      failOnStatusCode: false\n    });\n    _NavigationPage.default.clickMenuItem(item);\n    cy.url().should(\"not.be.empty\");\n  });\n});",
+              "err": {},
+              "uuid": "1151dfcc-c4e9-4207-af3e-40589bb2d8db",
+              "parentUUID": "77ec0c9a-fc42-4e78-ae00-821b65e06cf3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "61ce5b46-d5df-4311-8a1b-633fe6c2155d",
+            "80e82ecd-798e-46bb-9f7a-55aaada4115e",
+            "1151dfcc-c4e9-4207-af3e-40589bb2d8db"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12516,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

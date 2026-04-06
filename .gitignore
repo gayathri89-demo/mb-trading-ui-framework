@@ -3,5 +3,6 @@ cypress/videos
 cypress/screenshots
 cypress/reports/*
 !cypress/reports/report.html
+!cypress/reports/merged.json
 .DS_Store
 .env
